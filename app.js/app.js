@@ -1,3 +1,32 @@
+const signup=(event)=>{
+  event.preventDefault()
+  const username=document.getElementById("username").value;
+  const first_name=document.getElementById("first_name").value;
+  const last_name=document.getElementById("last_name").value;
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password").value;
+  const confirm_password=document.getElementById("confirm_password").value;
+  if(password===confirm_password){
+    console.log("Ok")
+    const info={
+      "username":username,
+      "first_name":first_name,
+      "last_name":last_name,
+      "email":email,
+      "password":password,
+      "confirm_password":confirm_password
+    }
+    fetch("https://sdp-final-backend.onrender.com/user/register/",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify(info)
+    })
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+    .catch(er=>console.log(er))
+  }
+}
+
 const login=(event)=>{
     event.preventDefault()
     const username=document.getElementById("username").value
@@ -15,7 +44,7 @@ const login=(event)=>{
             if (data.token && data.user_id) {
               localStorage.setItem("token", data.token);
               localStorage.setItem("user_id", data.user_id);
-            //   window.location.href = "index.html";
+              window.location.href = "home.html";
             }
           }).catch(er=>console.log(er));
       }
