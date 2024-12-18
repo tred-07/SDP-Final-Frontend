@@ -16,8 +16,8 @@ const signup=(event)=>{
       "password":password,
       "confirm_password":confirm_password
     }
-    // fetch("https://sdp-final-backend.vercel.app/user/register/"
-    fetch("http://127.0.0.1:8000/user/register/"  
+    fetch("https://sdp-final-backend.vercel.app/user/register/"
+    // fetch("http://127.0.0.1:8000/user/register/"  
     ,{
       method:"POST",
       headers:{"content-type":"application/json"},
@@ -40,7 +40,9 @@ const login=(event)=>{
     console.log(username)
     console.log(username)
     if ((username, password)) {
-        fetch("https://sdp-final-backend.vercel.app/user/login/", {
+        fetch("https://sdp-final-backend.vercel.app/user/login/",
+        // fetch("http://127.0.0.1:8000/user/login/",
+        {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
