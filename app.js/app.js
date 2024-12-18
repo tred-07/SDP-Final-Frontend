@@ -2,7 +2,7 @@ const login=(event)=>{
     event.preventDefault()
     const username=document.getElementById("username").value
     const password=document.getElementById("password").value
-
+    console.log(username)
     console.log(username)
     if ((username, password)) {
         fetch("https://sdp-final-backend.onrender.com/user/login/", {
