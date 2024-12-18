@@ -16,13 +16,19 @@ const signup=(event)=>{
       "password":password,
       "confirm_password":confirm_password
     }
-    fetch("https://sdp-final-backend.onrender.com/user/register/",{
+    // fetch("https://sdp-final-backend.vercel.app/user/register/"
+    fetch("http://127.0.0.1:8000/user/register/"  
+    ,{
       method:"POST",
       headers:{"content-type":"application/json"},
       body:JSON.stringify(info)
     })
     .then(res=>res.json())
-    .then(data=>console.log(data))
+    .then(data=>
+    {
+      document.getElementById("messageBox").innerText="Check your mail inbox or spam."
+    }
+    )
     .catch(er=>console.log(er))
   }
 }
@@ -34,7 +40,7 @@ const login=(event)=>{
     console.log(username)
     console.log(username)
     if ((username, password)) {
-        fetch("https://sdp-final-backend.onrender.com/user/login/", {
+        fetch("https://sdp-final-backend.vercel.app/user/login/", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -55,7 +61,7 @@ const logout=(event)=>
 {
     event.preventDefault()
     const token = localStorage.getItem("token");
-    fetch("https://sdp-final-backend.onrender.com/user/logout/", {
+    fetch("https://sdp-final-backend.vercel.app/user/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,
@@ -67,5 +73,6 @@ const logout=(event)=>
         console.log(data);
         localStorage.removeItem("token");
         localStorage.removeItem("user_id");
+        window.location.href="index.html"
       });
   };
