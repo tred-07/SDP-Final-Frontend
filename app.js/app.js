@@ -16,7 +16,7 @@ const signup=(event)=>{
       "password":password,
       "confirm_password":confirm_password
     }
-    fetch("https://sdp-final-backend.vercel.app/user/register/"
+    fetch("https://q-rent-backend.vercel.app/user/register"
     // fetch("http://127.0.0.1:8000/user/register/"  
     ,{
       method:"POST",
@@ -40,7 +40,7 @@ const login=(event)=>{
     console.log(username)
     console.log(username)
     if ((username, password)) {
-        fetch("https://sdp-final-backend.vercel.app/user/login/",
+        fetch("https://q-rent-backend.vercel.app/user/login/",
         // fetch("http://127.0.0.1:8000/user/login/",
         {
           method: "POST",
@@ -63,7 +63,7 @@ const logout=(event)=>
 {
     event.preventDefault()
     const token = localStorage.getItem("token");
-    fetch("https://sdp-final-backend.vercel.app/user/logout/", {
+    fetch("https://q-rent-backend.vercel.app/user/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,
