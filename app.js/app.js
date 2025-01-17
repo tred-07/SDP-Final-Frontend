@@ -38,10 +38,10 @@ const login=(event)=>{
     const username=document.getElementById("username").value
     const password=document.getElementById("password").value
     console.log(username)
-    console.log(username)
+    console.log(password)
     if ((username, password)) {
-        fetch("https://q-rent-backend.vercel.app/user/login/",
-        // fetch("http://127.0.0.1:8000/user/login/",
+        fetch("https://q-rent-backend.vercel.app/user/login/"
+        ,
         {
           method: "POST",
           headers: { "content-type": "application/json" },

@@ -1,1 +1,1 @@
-# URL- https://rent-today.vercel.app/
+# URL- https://qrent.vercel.app/
