@@ -95,20 +95,20 @@ const showAllAdvertiseButNoAction=()=>{
          if(ad.image!=null){
           div.innerHTML=`
           <img src="${ad.image}">
-          <h2>${ad.title}</h2>
-          <p>${ad.description}</p>
-          <p>Price: ${ad.price}</p>
-          <button onclick="showAdDetails(${ad.id})">Show Details</button>`
+          <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
+          <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+          <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto my-[25px]">Show Details</button>`
          }
          else{
           div.innerHTML=`
           <img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">
-          <h2>${ad.title}</h2>
-          <p>${ad.description}</p>
-          <p>Price: ${ad.price}</p>
-          <button onclick="showAdDetails(${ad.id})">Show Details</button>`
+          <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
+          <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+          <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto my-[25px]">Show Details</button>`
          }
-         div.classList.add('flex','flex-col','justify-center','border-[black]','rounded-[25px]','px-[20px]','py-[20px','border-[5px]')
+         div.classList.add('flex','flex-col','justify-center','border-[black]','rounded-[25px]','px-[20px]','py-[20px','border-[5px]','w-[20%]')
          parent.appendChild(div)
          console.log(ad.title);
          console.log(ad.description);
