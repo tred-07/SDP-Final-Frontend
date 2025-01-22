@@ -16,7 +16,7 @@ const signup = (event) => {
       "password": password,
       "confirm_password": confirm_password
     }
-    fetch("https://q-rent-backend.vercel.app/user/register/"
+    fetch("https://qrent-backend.onrender.com/user/register/"
       // fetch("http://127.0.0.1:8000/user/register/"  
       , {
         method: "POST",
@@ -36,10 +36,8 @@ const login = (event) => {
   event.preventDefault()
   const username = document.getElementById("username").value
   const password = document.getElementById("password").value
-  console.log(username)
-  console.log(password)
   if ((username, password)) {
-    fetch("https://q-rent-backend.vercel.app/user/login/"
+    fetch("https://qrent-backend.onrender.com/user/login/"
       ,
       {
         method: "POST",
@@ -61,7 +59,7 @@ const login = (event) => {
 const logout = (event) => {
   event.preventDefault()
   const token = localStorage.getItem("token");
-  fetch("https://q-rent-backend.vercel.app/user/logout/", {
+  fetch("https://qrent-backend.onrender.com/user/logout/", {
     method: "POST",
     headers: {
       Authorization: `Token ${token}`,
@@ -81,7 +79,7 @@ const logout = (event) => {
 
 
 const showAllAdvertiseButNoAction = () => {
-  fetch("https://q-rent-backend.vercel.app/advertise/all/")
+  fetch("https://qrent-backend.onrender.com/advertise/all/")
     .then(res => res.json())
     .then(data => {
       console.log(data);
