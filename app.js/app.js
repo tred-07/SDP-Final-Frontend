@@ -1,5 +1,14 @@
 const signup = (event) => {
   event.preventDefault()
+  const token = localStorage.getItem("token");
+  if (token) {
+    alert("Already sign up and you are logged in.")
+    document.getElementById("messageBoxSignUp").innerHTML =`
+    <h2 class="text-center font-bold text-[1.25rem] text-[blue]">Already sign up and you are logged in.</h2>
+    <a href="home.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
+    `
+    return;
+  }
   const username = document.getElementById("username").value;
   const first_name = document.getElementById("first_name").value;
   const last_name = document.getElementById("last_name").value;
@@ -34,6 +43,15 @@ const signup = (event) => {
 
 const login = (event) => {
   event.preventDefault()
+  const token = localStorage.getItem("token");
+  if (token) {
+    alert("Already sign up and you are logged in.")
+    document.getElementById("messageBoxLogIn").innerHTML =`
+    <h2 class="text-center font-bold text-[1.25rem] text-[blue]">Already sign up and you are logged in.</h2>
+    <a href="home.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
+    `
+    return;
+  }
   const username = document.getElementById("username").value
   const password = document.getElementById("password").value
   if ((username, password)) {
@@ -116,6 +134,5 @@ const showAllAdvertiseButNoAction = () => {
     })
 }
 
-
-
 showAllAdvertiseButNoAction()
+
