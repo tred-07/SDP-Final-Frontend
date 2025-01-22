@@ -78,3 +78,51 @@ const logout=(event)=>
         window.location.href="index.html"
       });
   };
+
+
+
+
+const showAllAdvertiseButNoAction=()=>{
+  fetch("https://q-rent-backend.vercel.app/advertise/all/")
+  .then(res=>res.json())
+  .then(data=>
+   {
+      console.log(data);
+      data.forEach(ad=>
+      {
+         const parent=document.getElementById("all-advertise")
+         const div=document.createElement("div")
+         if(ad.image!=null){
+          div.innerHTML=`
+          <img src="${ad.image}">
+          <h2>${ad.title}</h2>
+          <p>${ad.description}</p>
+          <p>Price: ${ad.price}</p>
+          <button onclick="showAdDetails(${ad.id})">Show Details</button>`
+         }
+         else{
+          div.innerHTML=`
+          <img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">
+          <h2>${ad.title}</h2>
+          <p>${ad.description}</p>
+          <p>Price: ${ad.price}</p>
+          <button onclick="showAdDetails(${ad.id})">Show Details</button>`
+         }
+         div.classList.add('flex','flex-col','justify-center','border-[black]','rounded-[25px]','px-[20px]','py-[20px','border-[5px]')
+         parent.appendChild(div)
+         console.log(ad.title);
+         console.log(ad.description);
+         console.log(ad.price);
+         ad.review.forEach(re=>{
+           console.log(re.user);
+           console.log(re.star);
+           console.log(re.review);
+           console.log(re.created_at);
+         })
+      })
+   })
+}  
+
+
+
+showAllAdvertiseButNoAction()
