@@ -109,7 +109,8 @@ const showAllAdvertiseButNoAction = () => {
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto my-[25px]">Show Details</button>`
+          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[25px] text-[15px]">Rent For Request</button>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)
         }
@@ -119,7 +120,8 @@ const showAllAdvertiseButNoAction = () => {
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto my-[25px]">Show Details</button>`
+          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[25px] text-[15px]">Rent For Request</button>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)
         }
