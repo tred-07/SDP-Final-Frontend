@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
   </head>
   <body>
-    <header class="d-flex justify-center">
-      <div class="navbar bg-base-100 w-[75%] items-center" id="header">
+    <header>
+      <div class="navbar bg-base-100 w-[75%] items-center m-auto" id="header">
         <div class="flex-1">
           <a href="index.html" class="text-[2.5rem] font-bold">QRent</a>
         </div>
@@ -27,6 +29,27 @@
         
       </div>
       
+
+      <div class="banner w-[80%] m-auto" style="border: 5px solid black;border-radius: 5px;">
+        <div class="swiffy-slider slider-item-ratio slider-item-ratio-16x9 slider-nav-animation slider-nav-animation-fadein" id="swiffy-animation">
+          <ul class="slider-container" id="container1">
+              <li id="slide1" class=""><img src="./images/image1.jpg" alt="..." loading="lazy"></li>
+              <li id="slide2" class=""><img src="./images/image-2.jpg" alt="..." loading="lazy"></li>
+              <li id="slide3" class="slide-visible"><img src="./images/image3.jpg" alt="..." loading="lazy"></li>
+              <li id="slide4"><img src="./images/image4.jpg" alt="..." loading="lazy"></li>
+          </ul>
+      
+          <button type="button" class="slider-nav" aria-label="Go to previous"></button>
+          <button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+      
+          <div class="slider-indicators">
+              <button aria-label="Go to slide" class="active"></button>
+              <button aria-label="Go to slide" class=""></button>
+              <button aria-label="Go to slide" class=""></button>
+              <button aria-label="Go to slide" class=""></button>
+          </div>
+      </div>
+      </div>
     </header>
     <main>
 
