@@ -1,5 +1,8 @@
 const fetchProfile=()=>{
     const token = localStorage.getItem("token");
+    if(!token){
+        window.location.href = "login.html";
+    }
     fetch("https://qrent-backend.onrender.com/user/my/",
         {
             method: "GET", 
@@ -20,10 +23,10 @@ const fetchProfile=()=>{
             <h2 class="text-center font-bold text-[2rem]">Username: ${element.username}</h2>
             <p class="text-center font-bold text-[2rem]">Name: ${element.first_name} ${element.last_name}</p>
             <p class="text-center font-bold text-[2rem]">Email: ${element.email}</p>
-            <h2 class="text-center font-bold text-[2rem]">Total Advertisements:${element.advertise.length}</h2>
+            <h2 class="text-center font-bold text-[2rem]">Total Advertisement:${element.advertise.length}</h2>
             <h2 class="text-center font-bold text-[2rem]">Total Favourite:${element.favourite.length}</h2>
-            <h2 class="text-center font-bold text-[2rem]">Total Advertisements:${element.request.length}</h2>
-            <h2 class="text-center font-bold text-[2rem]">Total Advertisements:${element.feedback.length}</h2>
+            <h2 class="text-center font-bold text-[2rem]">Total Request:${element.request.length}</h2>
+            <h2 class="text-center font-bold text-[2rem]">Total Review:${element.feedback.length}</h2>
             `
             div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[100px]', 'border-[5px]', 'w-[100%]')
             parent.appendChild(div)
@@ -37,7 +40,26 @@ const fetchProfile=()=>{
             })
             
             element.request.forEach(el=>{
-                console.log(el.id,el.advertise,el.created_at);
+                console.log("Request: ",el.id,el.advertise,el.created_at);
+                const myRequst=document.getElementById("myRequest")
+                const div=document.createElement("div")
+            if(el.is_accepted){
+                div.innerHTML=`
+              <p>Advertise id:${el.id}</p>
+              <p>Advertise title: ${el.advertise}</p>
+              <p>Requested time: ${el.created_at}</p>
+              <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-success">Yes</span></p>
+            `
+            }
+            else{
+                div.innerHTML=`
+              <p>Advertise id:${el.id}</p>
+              <p>Advertise title: ${el.advertise}</p>
+              <p>Requested time: ${el.created_at}</p>
+              <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-danger">No</span></p>
+            `
+            }
+            myRequst.appendChild(div)
             })
 
             element.feedback.forEach(el=>{

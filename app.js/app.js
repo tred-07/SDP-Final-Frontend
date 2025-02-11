@@ -155,6 +155,9 @@ const rentForRequest=(id)=>{
   const user_id=localStorage.getItem("user_id")
   const token=localStorage.getItem("token")
   const message="I want to rent this."
+  if(!token){
+    window.location.href = "login.html";
+}
   fetch(`https://qrent-backend.onrender.com/request/create/${id}/`,
     {
       method: 'POST',
@@ -191,3 +194,4 @@ const loadReview=()=>{
 
 
 loadReview()
+

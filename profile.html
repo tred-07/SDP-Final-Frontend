@@ -19,8 +19,10 @@
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1 gap-[15px]">
-            <!-- <a href="" class="btn btn-primary"></a> -->
-            <a href="" class="btn btn-primary" onclick="logout(event)">LogOut</a>
+            <a href="index.html" class="btn btn-primary">Home</a>
+            <a href="" class="btn btn-primary">My Favourite</a>
+            <a href="" class="btn btn-primary">My Request</a>
+            <a href="" class="btn btn-danger" onclick="logout(event)">LogOut</a>
           </ul>
         </div>
         
@@ -28,9 +30,12 @@
       
     </header>
     <main>
-        <div id="profile-container">
+        <div id="profile-container" class="w-[90%] m-auto">
           <div id="profile-part"></div>
           <div id="myAdvertise"></div>
+          <div id="myRequest">
+            
+          </div>
         </div>
         <div id="all-advertise" class="flex flex-wrap justify-center items-center gap-[20px] hidden">
         </div>
