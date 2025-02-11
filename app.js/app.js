@@ -138,3 +138,14 @@ const showAllAdvertiseButNoAction = () => {
 
 showAllAdvertiseButNoAction()
 
+
+
+const rentForRequest=(id)=>{
+  fetch(`https://qrent-backend.onrender.com/request/create/${id}/`)
+  .then(res=>res.json)
+  .then(data=>{
+    console.log("You request successfully submitted");
+    
+  })
+  .catch(er=>console.log(er))
+}
