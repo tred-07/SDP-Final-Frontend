@@ -74,7 +74,6 @@ const login = (event) => {
         }
         else {
           alert("Wrong Credential")
-          throw new error("Email Or Username may be exist.");
         }
       })
       .then((data) => {
