@@ -16,7 +16,7 @@ const signup = (event) => {
   const password = document.getElementById("password").value;
   const confirm_password = document.getElementById("confirm_password").value;
   if (password === confirm_password) {
-    console.log("Ok")
+    console.log("pass match")
     const info = {
       "username": username,
       "first_name": first_name,
@@ -32,7 +32,16 @@ const signup = (event) => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(info)
       })
-      .then(res => res.json())
+      .then(res =>{
+        if(res.ok){
+          res.json()
+          console.log(res);
+        }
+        else {
+          alert("Email Or Username may be exist.")
+          return
+        }
+      })
       .then(data => {
         document.getElementById("messageBox").innerText = "Check your mail inbox or spam."
       }
@@ -62,7 +71,15 @@ const login = (event) => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ username, password }),
       })
-      .then((res) => res.json())
+      .then((res) => {
+        if(res.ok){
+          res.json()
+        }
+        else {
+          alert("Wrong Credential")
+          return
+        }
+      })
       .then((data) => {
         if (data.token && data.user_id) {
           localStorage.setItem("token", data.token);
@@ -138,10 +155,20 @@ const showAllAdvertiseButNoAction = () => {
 
 showAllAdvertiseButNoAction()
 
-
-
 const rentForRequest=(id)=>{
-  fetch(`https://qrent-backend.onrender.com/request/create/${id}/`)
+  const user_id=localStorage.getItem("user_id")
+  const token=localStorage.getItem("token")
+  const message="I want to rent this."
+  fetch(`https://qrent-backend.onrender.com/request/create/${id}/`,
+    {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+      },
+      body: JSON.stringify({ message })
+    }
+  )
   .then(res=>res.json)
   .then(data=>{
     console.log("You request successfully submitted");
@@ -149,3 +176,22 @@ const rentForRequest=(id)=>{
   })
   .catch(er=>console.log(er))
 }
+
+
+const loadReview=()=>{
+  fetch("https://qrent-backend.onrender.com/feedback/")
+  .then(res=>res.json())
+  .then(data=>{
+    data.forEach(el=>{
+      console.log(el);
+      
+      console.log("Review");
+      console.log(el.user.last_name);
+      
+      
+    })
+  })
+}
+
+
+loadReview()
