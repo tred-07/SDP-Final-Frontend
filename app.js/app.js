@@ -70,7 +70,7 @@ const login = (event) => {
       })
       .then((res) => {
         if(res.ok){
-          res.json()
+          return res.json()
         }
         else {
           alert("Wrong Credential")
