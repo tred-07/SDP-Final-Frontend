@@ -35,17 +35,14 @@ const signup = (event) => {
       .then(res =>{
         if(res.ok){
           res.json()
+          document.getElementById("messageBox").innerText = "Check your mail inbox or spam."
           console.log(res);
         }
         else {
           alert("Email Or Username may be exist.")
-          throw new error("Email Or Username may be exist.");
+          document.getElementById("messageBox").innerText = "Email Or Username may be exist."
         }
       })
-      .then(data => {
-        document.getElementById("messageBox").innerText = "Check your mail inbox or spam."
-      }
-      )
       .catch(er => console.log(er))
   }
 }
