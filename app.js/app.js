@@ -39,7 +39,7 @@ const signup = (event) => {
         }
         else {
           alert("Email Or Username may be exist.")
-          return
+          throw new error("Email Or Username may be exist.");
         }
       })
       .then(data => {
@@ -77,7 +77,7 @@ const login = (event) => {
         }
         else {
           alert("Wrong Credential")
-          return
+          throw new error("Email Or Username may be exist.");
         }
       })
       .then((data) => {
