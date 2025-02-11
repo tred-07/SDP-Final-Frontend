@@ -15,8 +15,6 @@ const fetchProfile=()=>{
     then(response => response.json())
    .then(data => {
         data.forEach(element => {
-            const parentsAdvertise=document.getElementById("myAdvertise")
-            parentsAdvertise.innerHTML=``
             const parent=document.getElementById("profile-part")
             const div=document.createElement("div")
             div.innerHTML=`
@@ -32,7 +30,44 @@ const fetchProfile=()=>{
             parent.appendChild(div)
             console.log(element);
             element.advertise.forEach(el=>{
-                console.log(el.id,el.title,el.description,el.price,el.image,el.is_approved,el.is_accepted,el.created_at,el.updated_at);
+                console.log("Ad: ",el);
+                const myAdvertiseM=document.getElementById("myAdvertiseM")
+                const div=document.createElement("div")
+                if(el.is_accepted && el.is_approved){
+                    div.innerHTML=`
+                <p>${el.id}</p>
+                <p>${el.title}</p>
+                <p>${el.description}</p>
+                <p>${el.price}</p>
+                <button><span class="btn btn-success">Approved</span></button>
+                <button><span class="btn btn-success">Accepted</span></button>
+                `
+                }
+                else if(!el.is_accepted && el.is_approved){
+                    div.innerHTML=`
+                <p>${el.id}</p>
+                <p>${el.title}</p>
+                <p>${el.description}</p>
+                <p>${el.price}</p>
+                <button><span class="btn btn-success">Approved</span></button>
+                <button><span class="btn btn-danger">Not Accepted</span></button>
+                <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a>
+                `
+                }
+                else{
+                    div.innerHTML=`
+                <p>${el.id}</p>
+                <p>${el.title}</p>
+                <p>${el.description}</p>
+                <p>${el.price}</p>
+                <button><span class="btn btn-danger">Not Approved</span></button>
+                <button><span class="btn btn-danger">Not Accepted</span></button>
+                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a>
+                `
+                }
+                myAdvertiseM.appendChild(div)
+                
+                
             })
 
             element.favourite.forEach(el=>{
@@ -41,7 +76,7 @@ const fetchProfile=()=>{
             
             element.request.forEach(el=>{
                 console.log("Request: ",el.id,el.advertise,el.created_at);
-                const myRequst=document.getElementById("myRequest")
+                const myRequst=document.getElementById("myRequestM")
                 const div=document.createElement("div")
             if(el.is_accepted){
                 div.innerHTML=`
@@ -72,3 +107,6 @@ const fetchProfile=()=>{
     
   }
   fetchProfile();
+
+
+ 

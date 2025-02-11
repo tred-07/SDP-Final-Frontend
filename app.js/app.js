@@ -5,7 +5,7 @@ const signup = (event) => {
     alert("Already sign up and you are logged in.")
     document.getElementById("messageBoxSignUp").innerHTML =`
     <h2 class="text-center font-bold text-[1.25rem] text-[blue]">Already sign up and you are logged in.</h2>
-    <a href="home.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
+    <a href="profile.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
     `
     return;
   }
@@ -54,7 +54,7 @@ const login = (event) => {
     alert("Already sign up and you are logged in.")
     document.getElementById("messageBoxLogIn").innerHTML =`
     <h2 class="text-center font-bold text-[1.25rem] text-[blue]">Already sign up and you are logged in.</h2>
-    <a href="home.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
+    <a href="profile.html" class="text-center font-bold text-[1.25rem] btn btn-success w-[25%] mx-auto my-[10px]">Click here for redirect in your profile.</a>
     `
     return;
   }
@@ -80,7 +80,7 @@ const login = (event) => {
         if (data.token && data.user_id) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user_id", data.user_id);
-          window.location.href = "home.html";
+          window.location.href = "profile.html";
         }
       }).catch(er => console.log(er));
   }
