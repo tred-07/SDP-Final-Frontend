@@ -45,15 +45,14 @@ const fetchProfile=()=>{
                 const div=document.createElement("div")
             if(el.is_accepted){
                 div.innerHTML=`
-              <p>Advertise id:${el.id}</p>
               <p>Advertise title: ${el.advertise}</p>
               <p>Requested time: ${el.created_at}</p>
               <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-success">Yes</span></p>
+              
             `
             }
             else{
                 div.innerHTML=`
-              <p>Advertise id:${el.id}</p>
               <p>Advertise title: ${el.advertise}</p>
               <p>Requested time: ${el.created_at}</p>
               <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-danger">No</span></p>
