@@ -28,6 +28,7 @@ const createAdvertise=(event)=>{
             if(res.ok){
                 alert("Successful")
                 return  res.json();
+                window.location.href()
             }
             else{
                 alert("Something went wrong.")
