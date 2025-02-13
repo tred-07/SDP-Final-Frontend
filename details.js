@@ -16,8 +16,8 @@ const adDetails=(id)=>{
     const id=localStorage.getItem("ad_id")
     const token=localStorage.getItem("token")
     localStorage.removeItem("ad_id")
-    console.log(id);
-    fetch(`https://qrent-backend.onrender.com/advertise/5/`,
+    console.log("Ad id: ",id);
+    fetch(`https://qrent-backend.onrender.com/advertise/${id}/`,
         {
             method: "GET",
             headers: {
@@ -30,17 +30,26 @@ const adDetails=(id)=>{
         .then(data=>{
             const parent=document.getElementById("showDetails")
             const div=document.createElement("div")
+            console.log("Check: ",data.id,data.title,data.description,data.price,data.location);
+            
             div.innerHTML=`
-            <p>${data.title}</p>
-            <p>${data.description}</p>
-            <p>${data.price}</p>
-            <p>${data.name.toString().replaceAll(",","")}</p>
+            <h3 style="text-align:center">Posted By Advertise title:</h3>
+      <div class="d-flex justify-center py-[5px]">      <input type="text" name="" id="editT" value="${data.title}" style="border:1px solid black;"></div>
+            <h3 style="text-align:center">Posted By Description</h3>
+            <div class="d-flex justify-center py-[5px]"><input type="text" name="" id="editDes" value="${data.description}" style="border:1px solid black;"></div>
+            <h3 style="text-align:center">Posted By Rent Price:</h3>
+      <div class="d-flex justify-center py-[5px]">      <input type="text" name="" id="editP" value="${data.price}" style="border:1px solid black;"></div>
+            <h3 style="text-align:center">Location:</h3>
+         <div class="d-flex justify-center py-[5px]">   <input type="text" name="" id="editL" value="${data.location}" style="border:1px solid black;"></div>
+         <div class="d-flex justify-center mb-[25px] mt-[5px]" onclick="editAd(${data.id})"><button class="btn btn-primary">Save</button></div>
+            <div class="d-flex justify-center py-[5px] gap-[5px]">
             ${
                 data.is_approved?`<button class="btn btn-success">Approved</button>`:`<button class="btn btn-danger">Not Approved</button>`
             }
             ${
                 data.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</button>`
-            }
+            }</div>
+            <h3 style="text-align:center">Posted By ${data.name.toString().replaceAll(",","")} means you.</h3>
             `
             parent.appendChild(div)
             console.log(data.name,typeof(data.name));
@@ -51,7 +60,7 @@ const adDetails=(id)=>{
                 console.log(el.user.username);
                 
                 div.innerHTML=`
-                    <p>Message: ${el.message}</p>
+                    <h3 style="text-align:center">Posted By Message: ${el.message}</h3>
                     ${
                         el.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</buttom>`
                     }
@@ -65,4 +74,32 @@ const adDetails=(id)=>{
   }
 
 
-  showDetail()
+  showDetail();
+
+  const editAd=(id)=>{
+   const token=localStorage.getItem("token")
+   const user_id=localStorage.getItem("user_id")
+   const title=document.getElementById("editT").value
+   const description=document.getElementById("editDes").value
+   const price=document.getElementById("editP").value
+   const location=document.getElementById("editL").value
+   console.log(title,description,price,location);
+   
+   if(!token || !user_id)window.location.href="login.html"
+   else{
+    fetch(`https://qrent-backend.onrender.com/advertise/edit/${id}/`,{
+        method:"PUT",
+        headers:{Authorization:`Token ${token}`,"Content-Type":"application/json"},
+        body:JSON.stringify({title,description,price,location})
+    })
+    .then(res=>{
+        if(res.ok){
+            alert("Edit Successfull")
+            window.location.href="profile.html"
+            return res.json()
+        }
+        else{alert("Something went wrong")}
+    })
+   }
+   
+  };

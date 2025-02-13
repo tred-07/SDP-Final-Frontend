@@ -57,6 +57,8 @@ const fetchProfile=()=>{
                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a></div>
                 
                 `
+                console.log(el.id);
+                
                 }
                 else{
                     div.innerHTML=`
@@ -70,6 +72,7 @@ const fetchProfile=()=>{
                 <button><span class="btn btn-danger">Not Accepted</span></button>
                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a></div>
                 `
+                console.log(el.id);
                 }
                 myAdvertiseM.appendChild(div)
                 
@@ -77,10 +80,20 @@ const fetchProfile=()=>{
             })
 
             element.favourite.forEach(el=>{
-                const favouriteM=document.getElementById("myFavourite")
+                const favouriteM=document.getElementById("myFavouriteM")
                 const div=document.createElement("div")
-                console.log("Fav: ",el,el.id,el.name,el.title);
-                
+                const adTitle=" "
+                fetch(`https://qrent-backend.onrender.com/advertise/all/${el.advertise}/`)
+                .then(res=>res.json()).then(data=>{
+                    div.innerHTML=`
+                <p>${data.title}</h3>
+                <p>${el.advertise}</p>
+                <p>${data.location}</p>
+                <p>${data.price} BDT</p>
+                `
+                })
+                favouriteM.appendChild(div)
+                console.log("Fav: ",adTitle);
             })
             
             element.request.forEach(el=>{
