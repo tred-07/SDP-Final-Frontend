@@ -35,20 +35,22 @@ const fetchProfile=()=>{
                 const div=document.createElement("div")
                 if(el.is_accepted && el.is_approved){
                     div.innerHTML=`
-                <p>${el.id}</p>
-                <p>${el.title}</p>
-                <p>${el.description}</p>
-                <p>${el.price}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">${el.id}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">${el.title}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">${el.description}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
                 <button><span class="btn btn-success">Approved</span></button>
                 <button><span class="btn btn-success">Accepted</span></button>
                 `
                 }
                 else if(!el.is_accepted && el.is_approved){
                     div.innerHTML=`
-                <p>${el.id}</p>
-                <p>${el.title}</p>
-                <p>${el.description}</p>
-                <p>${el.price}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">${el.id}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">${el.title}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">${el.description}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
                 <button><span class="btn btn-success">Approved</span></button>
                 <button><span class="btn btn-danger">Not Accepted</span></button>
                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a>
@@ -56,13 +58,15 @@ const fetchProfile=()=>{
                 }
                 else{
                     div.innerHTML=`
-                <p>${el.id}</p>
-                <p>${el.title}</p>
-                <p>${el.description}</p>
-                <p>${el.price}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">${el.id}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">${el.title}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">${el.description}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
+                <p style="text-align:center;" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
+                <div class="d-flex justify-center gap-[15px]">
                 <button><span class="btn btn-danger">Not Approved</span></button>
                 <button><span class="btn btn-danger">Not Accepted</span></button>
-                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a>
+                <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a></div>
                 `
                 }
                 myAdvertiseM.appendChild(div)
