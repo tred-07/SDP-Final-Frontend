@@ -1,8 +1,6 @@
 const addToFavourite=(id)=>{
     const token=localStorage.getItem("token")
     const user_id=localStorage.getItem("user_id")
-    console.log(token);
-    
     if(!token || !user_id){
         window.location.href="login.html"
     }

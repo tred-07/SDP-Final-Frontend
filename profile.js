@@ -40,8 +40,8 @@ const fetchProfile=()=>{
                 <p style="text-align:center" class="text-[1.5rem] font-bold">${el.description}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
-                <button><span class="btn btn-success">Approved</span></button>
-                <button><span class="btn btn-success">Accepted</span></button>
+                <div class="d-flex justify-center gap-[15px]"><button><span class="btn btn-success">Approved</span></button>
+                <button><span class="btn btn-success">Accepted</span></button></div>
                 `
                 }
                 else if(!el.is_accepted && el.is_approved){
@@ -51,9 +51,11 @@ const fetchProfile=()=>{
                 <p style="text-align:center" class="text-[1.5rem] font-bold">${el.description}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
+                <div class="d-flex justify-center gap-[15px]">
                 <button><span class="btn btn-success">Approved</span></button>
                 <button><span class="btn btn-danger">Not Accepted</span></button>
-                <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a>
+                <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a></div>
+                
                 `
                 }
                 else{
@@ -75,7 +77,10 @@ const fetchProfile=()=>{
             })
 
             element.favourite.forEach(el=>{
-                console.log(el.id,el.advertise,el.created_at);
+                const favouriteM=document.getElementById("myFavourite")
+                const div=document.createElement("div")
+                console.log("Fav: ",el,el.id,el.name,el.title);
+                
             })
             
             element.request.forEach(el=>{

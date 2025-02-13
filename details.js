@@ -34,7 +34,7 @@ const adDetails=(id)=>{
             <p>${data.title}</p>
             <p>${data.description}</p>
             <p>${data.price}</p>
-            <p>${data.name}</p>
+            <p>${data.name.toString().replaceAll(",","")}</p>
             ${
                 data.is_approved?`<button class="btn btn-success">Approved</button>`:`<button class="btn btn-danger">Not Approved</button>`
             }
