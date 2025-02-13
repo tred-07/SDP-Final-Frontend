@@ -110,6 +110,8 @@ const logout = (event) => {
 
 
 const showAllAdvertiseButNoAction = () => {
+  const token=localStorage.getItem("token")
+  const user_id=localStorage.getItem("user_id")
   fetch("https://qrent-backend.onrender.com/advertise/all/")
     .then(res => res.json())
     .then(data => {
@@ -124,9 +126,10 @@ const showAllAdvertiseButNoAction = () => {
               <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
               <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-              <p>Posted by: ${name}</p>
-              <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[25px] text-[15px]">Rent For Request</button>
-              <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
+              <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+              ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
+              <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
+              <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
             }
           else{
           div.innerHTML = `
@@ -134,8 +137,10 @@ const showAllAdvertiseButNoAction = () => {
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[25px] text-[15px]">Rent For Request</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
+          <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
+          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
         }
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)
@@ -148,8 +153,9 @@ const showAllAdvertiseButNoAction = () => {
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
-          <button class="btn btn-warning w-[80%] mx-auto my-[25px] text-[15px]">Already Rented</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
+          ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
+          <button class="btn btn-warning w-[80%] mx-auto my-[15px] text-[15px]">Already Rented</button>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
           }
           else{
             div.innerHTML = `
@@ -158,8 +164,9 @@ const showAllAdvertiseButNoAction = () => {
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
-          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[25px] text-[15px]">Rent For Request</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[25px]">Show Details</button>`
+          ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
+          <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
+          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
           }
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)
