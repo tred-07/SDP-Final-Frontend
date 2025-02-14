@@ -21,7 +21,7 @@ const adDetailsTwo=(id)=>{
             return res.json()
         }
         else{
-            alert("Something Went Wrong.")
+            // alert("Something Went Wrong.")
             // window.location.href="index.html"
         }
     })
