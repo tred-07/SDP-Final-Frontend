@@ -130,7 +130,7 @@ const showAllAdvertiseButNoAction = () => {
               <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
               ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
               <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
-              <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
+              <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
             }
           else{
           div.innerHTML = `
@@ -142,7 +142,7 @@ const showAllAdvertiseButNoAction = () => {
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
+          <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
         }
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)
@@ -158,7 +158,7 @@ const showAllAdvertiseButNoAction = () => {
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button class="btn btn-warning w-[80%] mx-auto my-[15px] text-[15px]">Already Rented</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
+          <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
           }
           else{
             div.innerHTML = `
@@ -170,7 +170,7 @@ const showAllAdvertiseButNoAction = () => {
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
-          <button onclick="showAdDetails(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
+          <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
           }
           div.classList.add('flex', 'flex-col', 'justify-center', 'border-[black]', 'rounded-[25px]', 'px-[20px]', 'py-[20px', 'border-[5px]', 'w-[20%]')
           parent.appendChild(div)

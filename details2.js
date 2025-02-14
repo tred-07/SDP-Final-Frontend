@@ -5,6 +5,8 @@ const adDetailsTwo=(id)=>{
         window.location.href="login.html"
     }
     else{
+        console.log("check details2");
+        
         window.location.href="details2.html"
         localStorage.setItem("ad_id",id)
     }
