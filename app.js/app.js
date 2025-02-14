@@ -125,6 +125,7 @@ const showAllAdvertiseButNoAction = () => {
               <img src="${ad.image}">
               <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
               <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+              <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
               <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
               ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
@@ -136,6 +137,7 @@ const showAllAdvertiseButNoAction = () => {
           <img src="${ad.image}">
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+          <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
@@ -151,6 +153,7 @@ const showAllAdvertiseButNoAction = () => {
           <img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+          <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
@@ -162,6 +165,7 @@ const showAllAdvertiseButNoAction = () => {
           <img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">
           <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
+          <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
           <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}

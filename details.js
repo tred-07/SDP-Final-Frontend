@@ -30,7 +30,15 @@ const adDetails=(id)=>{
         .then(data=>{
             const parent=document.getElementById("showDetails")
             const div=document.createElement("div")
-            console.log("Check: ",data.id,data.title,data.description,data.price,data.location);
+            console.log("Check: ",data.id,data.title,data.description,data.price,data.location,Object.getOwnPropertyNames(data.request).length);
+            if(data.request)console.log("Check obj exist");
+            else console.log("Check obj exist");
+            
+            
+            data.request.forEach(el=>{
+                console.log(el);
+                
+            })
             
             div.innerHTML=`
             <h3 style="text-align:center">Posted By Advertise title:</h3>
@@ -52,22 +60,22 @@ const adDetails=(id)=>{
             <h3 style="text-align:center">Posted By ${data.name.toString().replaceAll(",","")} means you.</h3>
             `
             parent.appendChild(div)
-            console.log(data.name,typeof(data.name));
+            // console.log(data.name,typeof(data.name));
             
-            const showRequest=document.getElementById("showRequest")
-            console.log(typeof(data.request))
-            data.request.forEach(el => {
-                console.log(el.user.username);
+            // const showRequest=document.getElementById("showRequest")
+            // console.log(typeof(data.request))
+            // data.request.forEach(el => {
+            //     console.log(el.user.username);
                 
-                div.innerHTML=`
-                    <h3 style="text-align:center">Posted By Message: ${el.message}</h3>
-                    ${
-                        el.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</buttom>`
-                    }
-               `
-               console.log(el.id);
+            //     div.innerHTML=`
+            //         <h3 style="text-align:center">Posted By Message: ${el.message}</h3>
+            //         ${
+            //             el.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</buttom>`
+            //         }
+            //    `
+            //    console.log(el.id);
                
-            });
+            // });
             
         }).
         catch(er=>console.log(er))
@@ -103,3 +111,6 @@ const adDetails=(id)=>{
    }
    
   };
+
+
+  

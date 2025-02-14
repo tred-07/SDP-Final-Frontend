@@ -90,6 +90,7 @@ const fetchProfile=()=>{
                 <p>${el.advertise}</p>
                 <p>${data.location}</p>
                 <p>${data.price} BDT</p>
+                <button class="btn btn-primary" onclick="adDetailsTwo(${el.advertise})">Details</button>
                 `
                 })
                 favouriteM.appendChild(div)
