@@ -22,7 +22,7 @@ const adDetailsTwo=(id)=>{
         }
         else{
             alert("Something Went Wrong.")
-            window.location.href="profile.html"
+            // window.location.href="index.html"
         }
     })
     .then(data=>console.log("Details: ",data)
