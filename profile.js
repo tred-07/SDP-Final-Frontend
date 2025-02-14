@@ -86,11 +86,12 @@ const fetchProfile=()=>{
                 fetch(`https://qrent-backend.onrender.com/advertise/all/${el.advertise}/`)
                 .then(res=>res.json()).then(data=>{
                     div.innerHTML=`
-                <p>${data.title}</h3>
-                <p>${el.advertise}</p>
-                <p>${data.location}</p>
-                <p>${data.price} BDT</p>
-                <button class="btn btn-primary" onclick="adDetailsTwo(${el.advertise})">Details</button>
+                <p style="text-align:center">${data.title}</h3>
+                <p style="text-align:center">${data.description}</p>
+                <p style="text-align:center">${data.location}</p>
+                <p style="text-align:center">${data.price} BDT</p>
+                <p style="text-align:center">Posted By ${data.name.toString().replaceAll(",","")}</p>
+                <div class="d-flex justify-center w-[100%]"><button class="btn btn-primary" onclick="adDetailsTwo(${el.advertise})">Details</button></div>
                 `
                 })
                 favouriteM.appendChild(div)
