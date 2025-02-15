@@ -109,7 +109,18 @@ const fetchProfile=()=>{
               <p>Advertise title: ${el.advertise}</p>
               <p>Requested time: ${el.created_at}</p>
               <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-success">Yes</span></p>
-              
+              <div>
+              <p>Rating:</p>
+              <select id="rating" name="Rating" style="border:1ps solid black;width:100%;">
+                <option value="⭐">⭐</option>
+                <option value="⭐⭐">⭐⭐</option>
+                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+              </select>
+              <div class="d-flex justify-center py-[5px] w-[100%]"><input type="text" name="" id="comment" value="" placeholder="Comment" style="border:1px solid black;width:100%"></div>
+              </div>
+              <p class="btn btn-success my-[10px]" onclick="giveReview(${el.advertise})">Give Review</p>  
             `
             }
             else{
@@ -119,11 +130,30 @@ const fetchProfile=()=>{
               <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-danger">No</span></p>
             `
             }
+            div.style.border="5px solid black"
+            div.style.padding="10px"
+            div.style.marginBottom="5px"
             myRequst.appendChild(div)
             })
 
             element.feedback.forEach(el=>{
-                console.log(el.id,el.advertise,el.rating,el.comment,el.created_at);
+                const parent=document.getElementById("myReviewM")
+                const div=document.createElement("div")
+                const rating=""
+                fetch(`https://qrent-backend.onrender.com/feedback/${el.id}/`)
+                .then(res=>res.json())
+                .then(review_data=>{
+                    console.log("My Review:",review_data);
+                    div.innerHTML=`
+                <p>${review_data.advertise}</p>
+                <p>Comment: ${review_data.review}</p>
+                <p>Rating: ${review_data.star}</p>
+                `
+                })
+                
+                parent.appendChild(div)
+                
+                
             })
 
         });

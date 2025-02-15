@@ -4,7 +4,8 @@ const adDetailsTwo=(id)=>{
     if(!token){
         window.location.href="login.html"
     }
-    else{
+    else
+    {
         console.log("check details2");
         
         window.location.href="details2.html"
