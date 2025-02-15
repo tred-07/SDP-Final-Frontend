@@ -29,29 +29,10 @@ const adDetailsThree=(id)=>{
         .then(res=>res.json())
         .then(data=>{
             
-            data.request.forEach(el=>{
-                console.log("Req: ",el);
-            })
-            
-    //         div.innerHTML=`
-    //         <h3 style="text-align:center">Posted By Advertise title:</h3>
-    //   <div class="d-flex justify-center py-[5px]">      <p id="editT" value="${data.title}" style="border:1px solid black;"></div>
-    //         <h3 style="text-align:center">Posted By Description</h3>
-    //         <div class="d-flex justify-center py-[5px]"><p id="editDes" value="${data.description}" style="border:1px solid black;"></div>
-    //         <h3 style="text-align:center">Posted By Rent Price:</h3>
-    //   <div class="d-flex justify-center py-[5px]">      <p id="editP" value="${data.price}" style="border:1px solid black;"></div>
-    //         <h3 style="text-align:center">Location:</h3>
-    //      <div class="d-flex justify-center py-[5px]">   <p id="editL" value="${data.location}" style="border:1px solid black;"></div>
-    //         <div class="d-flex justify-center py-[5px] gap-[5px]">
-    //         ${
-    //             data.is_approved?`<button class="btn btn-success">Approved</button>`:`<button class="btn btn-danger">Not Approved</button>`
-    //         }
-    //         ${
-    //             data.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</button>`
-    //         }</div>
-    //         <h3 style="text-align:center">Posted By ${data.name.toString().replaceAll(",","")} means you.</h3>
-    //         `
-            
+            localStorage.setItem("title",data.title)
+            localStorage.setItem("description",data.description)
+            localStorage.setItem("location",data.location)
+            localStorage.setItem("price",data.price)
             data.request.forEach(el => {
                 const parent=document.getElementById("showDetails")
             const div=document.createElement("div")
@@ -64,6 +45,7 @@ const adDetailsThree=(id)=>{
                     <div class="d-flex justify-center items-center"> Request status: ${
                         el.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</buttom>`
                     }</div>
+                    <div>Do you want to accept this? <button class="btn btn-success" onclick="acceptRequest(${data.id})">Yes</button></div>
                `
                console.log("Req id: ",el.id);
                parent.appendChild(div)
@@ -76,6 +58,41 @@ const adDetailsThree=(id)=>{
 
 
   showDetail();
+
+
+
+  const acceptRequest=(id)=>{
+    const token=localStorage.getItem("token")
+    const user_id=localStorage.getItem("user_id")
+    const title=localStorage.getItem("title")
+    localStorage.removeItem("title")
+    const description=localStorage.getItem("description")
+    localStorage.removeItem("description")
+    const price=localStorage.getItem("price")
+    localStorage.removeItem("price")
+    const location=localStorage.getItem("location")
+    localStorage.removeItem("location")
+    const is_accepted="True"
+    console.log(title,description,price,location);
+    
+    if(!token || !user_id)window.location.href="login.html"
+    else{
+     fetch(`https://qrent-backend.onrender.com/advertise/edit/${id}/`,{
+         method:"PUT",
+         headers:{Authorization:`Token ${token}`,"Content-Type":"application/json"},
+         body:JSON.stringify({title,description,price,location,is_accepted})
+     })
+     .then(res=>{
+         if(res.ok){
+             alert("Accepted.")
+             window.location.href="profile.html"
+             return res.json()
+         }
+         else{alert("Something went wrong")}
+     })
+    }
+    
+   };
 
 
 
