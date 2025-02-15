@@ -19,7 +19,11 @@ const fetchProfile=()=>{
             const div=document.createElement("div")
             div.innerHTML=`
             <h2 class="text-center font-bold text-[2rem]">Username: ${element.username}</h2>
-            <p class="text-center font-bold text-[2rem]">Name: ${element.first_name} ${element.last_name}</p>
+            <!--<p class="text-center font-bold text-[2rem]">Name: ${element.first_name} ${element.last_name}</p>-->
+            <p class="text-center font-bold text-[2rem]">First name:</p>
+            <input type="text" name="" value="${element.first_name}" id="first_name" style="font-size:2rem;font-weight:bold;border:1px solid black;">
+            <p class="text-center font-bold text-[2rem]">Last name:</p>
+            <input type="text" name="" value="${element.last_name}" id="last_name" style="font-size:2rem;font-weight:bold;border:1px solid black;">
             <p class="text-center font-bold text-[2rem]">Email: ${element.email}</p>
             <h2 class="text-center font-bold text-[2rem]">Total Advertisement:${element.advertise.length}</h2>
             <h2 class="text-center font-bold text-[2rem]">Total Favourite:${element.favourite.length}</h2>
@@ -162,4 +166,21 @@ const fetchProfile=()=>{
   fetchProfile();
 
 
- 
+ const editProfile=()=>{
+    const id=localStorage.getItem("user_id")
+    const token=localStorage.getItem("token")
+    fetch(`https://qrent-backend.onrender.com/user/edit/${id}`,{
+        method:"PUT",
+        headers:({Authorization:`Token ${token}`,"Content-Type":"application/json"}),
+        body:JSON.stringify({first_name,last_name})
+    }).then(res=>{
+        if(res.ok){
+            alert("Save Successfully.")
+            window.location.href="profile.html"
+            return res.json()
+        }
+        else{
+            alert("Something went wrong")
+        }
+    }).catch(er=>console.log(er))
+ }
