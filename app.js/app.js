@@ -188,30 +188,7 @@ const showAllAdvertiseButNoAction = () => {
 
 showAllAdvertiseButNoAction()
 
-const rentForRequest=(id)=>{
-  const user_id=localStorage.getItem("user_id")
-  const token=localStorage.getItem("token")
-  const message="I want to rent this."
-  if(!token){
-    window.location.href = "login.html";
-}
-  fetch(`https://qrent-backend.onrender.com/request/create/${id}/`,
-    {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${token}`,
-      },
-      body: JSON.stringify({ message })
-    }
-  )
-  .then(res=>res.json)
-  .then(data=>{
-    console.log("You request successfully submitted");
-    
-  })
-  .catch(er=>console.log(er))
-}
+
 
 
 const loadReview=()=>{

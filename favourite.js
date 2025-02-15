@@ -19,7 +19,7 @@ const addToFavourite=(id)=>{
                 return res.json()
             }
             else{
-                alert("Something went wrong.")
+                alert("Already added.")
             }
         })
         .catch(er=>console.log(er))
