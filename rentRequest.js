@@ -19,7 +19,7 @@ const rentForRequest=(id)=>{
     .then(data=>{
       alert("You request successfully submitted. Refresh and Check on My Request option.")
       console.log("You request successfully submitted");
-      
+      location.reload()
     })
     .catch(er=>console.log(er))
   }

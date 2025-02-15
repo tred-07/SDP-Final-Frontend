@@ -150,10 +150,7 @@ const fetchProfile=()=>{
                 <p>Rating: ${review_data.star}</p>
                 `
                 })
-                
                 parent.appendChild(div)
-                
-                
             })
 
         });

@@ -10,9 +10,11 @@ const giveReview=(id)=>{
     }).then(res=>{
         if(res.ok){
             alert("Successfully Submitted.")
+            location.reload()
             return res.json()
         }
     }).then(data=>{
         window.location.href="profile.html"
+        location.reload()
     })
 }

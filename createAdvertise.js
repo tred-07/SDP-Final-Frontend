@@ -29,11 +29,13 @@ const createAdvertise=(event)=>{
             if(res.ok){
                 alert("Successful")
                 window.location.href="profile.html"
+                location.reload()
                 return  res.json();
                 
             }
             else{
                 alert("Something went wrong.")
+                location.reload()
             }
         })
         .catch(er=>console.log(er));

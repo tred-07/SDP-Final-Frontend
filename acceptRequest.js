@@ -114,10 +114,13 @@ const adDetailsThree=(id)=>{
         if(res.ok){
             alert("Accepted.")
             window.location.href="profile.html"
+            location.reload()
         }
         else{
             alert("Something went wrong.")
             window.location.href="profile.html"
+            location.reload()
+
         }
      })
     }
