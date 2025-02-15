@@ -32,14 +32,16 @@ const adDetailsTwo=(id)=>{
         const div=document.createElement("div")
         console.log(ad.title);
         div.innerHTML = 
-        `     ${ad.image?`<img src="${ad.image}">`:`<img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">`}
-              <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
+        `   <div class="w-[100%] d-flex justify-center">  ${ad.image?`<img src="${ad.image}">`:`<img src="pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg">`}
+            </div>  <h2 class="text-center font-bold text-[1.25rem]">${ad.title}</h2>
               <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-              <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
-              <button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>
-              <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>`
+              <p class="text-center font-bold text-[1.25rem]">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+              <div class="w-[100%] d-flex justify-center">
+              ${ad.is_accepted?`<button class="btn btn-warning">Already rented</button>`:`<button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>`}
+              </div>
+              `
         parent.appendChild(div);
     }
     ).catch(er=>console.log(er))
