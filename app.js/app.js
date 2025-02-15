@@ -127,10 +127,12 @@ const showAllAdvertiseButNoAction = () => {
               <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
               <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-              <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+              <p class="text-center font-bold">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+              <p class="text-center font-bold">Created at: ${ad.created_at.slice(0,10)}</p>
               ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
               <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
-              <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
+              <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>
+              `
             }
           else{
           div.innerHTML = `
@@ -139,7 +141,8 @@ const showAllAdvertiseButNoAction = () => {
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Created at: ${ad.created_at.slice(0,10)}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
           <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
@@ -155,7 +158,8 @@ const showAllAdvertiseButNoAction = () => {
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Created at: ${ad.created_at.slice(0,10)}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button class="btn btn-warning w-[80%] mx-auto my-[15px] text-[15px]">Already Rented</button>
           <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
@@ -167,7 +171,8 @@ const showAllAdvertiseButNoAction = () => {
           <p class="text-center font-bold text-[1.25rem]">${ad.description}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.location}</p>
           <p class="text-center font-bold text-[1.25rem]">Price: ${ad.price}</p>
-          <p>Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
+          <p class="text-center font-bold">Created at: ${ad.created_at.slice(0,10)}</p>
           ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
           <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
           <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>`
@@ -207,8 +212,8 @@ const loadReview=()=>{
                             <h3 class="card-title h5">${el.advertise}</h3>
                             <h3 class="card-title h5">Rating: ${el.star}</h3>
                             <h3 class="card-title h5">Comment:${el.review}</h3>
-                            <p class="card-text">Review by: ${el.name}</p>
-                            <div><a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-title">Review by: ${el.name}</p>
+                            <p class="card-title">Created at: ${el.created_at.slice(0,10)}</p>
                             </div>
                         </div>
                     </div>
