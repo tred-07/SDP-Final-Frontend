@@ -51,9 +51,11 @@ const fetchProfile=()=>{
                 <p style="text-align:center" class="text-[1.5rem] font-bold">${el.description}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Location: ${el.location}</p>
                 <p style="text-align:center" class="text-[1.5rem] font-bold">Price: ${el.price} BDT</p>
+                <p style="text-align:center" class="text-[1.5rem] font-bold">Total Request: ${el.request.length}</p>
                 <div class="d-flex justify-center gap-[15px]">
                 <button><span class="btn btn-success">Approved</span></button>
                 <button><span class="btn btn-danger">Not Accepted</span></button>
+                <a href="details3.html" class="btn btn-warning" onclick="adDetailsThree(${el.id})">Accept Request</a>
                 <a href="details.html" target="_blank" class="btn btn-primary" onclick="adDetails(${el.id})">Edit</a></div>
                 
                 `
