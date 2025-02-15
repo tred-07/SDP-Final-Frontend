@@ -60,7 +60,10 @@ const login = (event) => {
   }
   const username = document.getElementById("username").value
   const password = document.getElementById("password").value
-  if ((username, password)) {
+  if(username==="admin" && password==="admin"){
+     alert("Please contact with administrator and visit admin site.")
+  }
+  else if ((username, password)) {
     fetch("https://qrent-backend.onrender.com/user/login/"
       ,
       {
