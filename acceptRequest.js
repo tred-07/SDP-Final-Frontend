@@ -45,7 +45,7 @@ const adDetailsThree=(id)=>{
                     <div class="d-flex justify-center items-center"> Request status: ${
                         el.is_accepted?`<button class="btn btn-success">Accepted</button>`:`<button class="btn btn-danger">Not Accepted</buttom>`
                     }</div>
-                    <div>Do you want to accept this? <button class="btn btn-success" onclick="acceptRequest(${data.id},${el.id})">Yes</button></div>
+                    <div class="d-flex justify-center items-center my-[10px]">Do you want to accept this? <button class="btn btn-success" onclick="acceptRequest(${data.id},${el.id})">Yes</button></div>
                `
                console.log("Req id: ",el.id);
                parent.appendChild(div)

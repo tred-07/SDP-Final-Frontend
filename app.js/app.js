@@ -133,7 +133,7 @@ const showAllAdvertiseButNoAction = () => {
               <p class="text-center font-bold">Posted by: ${ad.name.toString().replaceAll(",","")}</p>
               <p class="text-center font-bold">Created at: ${ad.created_at.slice(0,10)}</p>
               ${(token&&user_id)?`<button onclick="addToFavourite(${ad.id})" class="btn btn-info w-[80%] mx-auto my-[5px] text-[15px]">Add To Favourite</button>`:``}
-              <button onclick="rentForRequest(${ad.id})" class="btn btn-primary w-[80%] mx-auto my-[15px] text-[15px]">Rent For Request</button>
+              <button class="btn btn-warning w-[80%] mx-auto my-[15px] text-[15px]">Not Available</button>
               <button onclick="adDetailsTwo(${ad.id})" class="btn btn-primary w-[50%] mx-auto mb-[15px]">Show Details</button>
               `
             }
