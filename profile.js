@@ -80,6 +80,9 @@ const fetchProfile=()=>{
                 `
                 console.log(el.id);
                 }
+                div.style.border="5px solid black"
+            div.style.padding="10px"
+            div.style.marginBottom="5px"
                 myAdvertiseM.appendChild(div)
                 
                 
@@ -100,6 +103,9 @@ const fetchProfile=()=>{
                 <div class="d-flex justify-center w-[100%]"><button class="btn btn-primary" onclick="adDetailsTwo(${el.advertise})">Details</button></div>
                 `
                 })
+                div.style.border="5px solid black"
+            div.style.padding="10px"
+            div.style.marginBottom="5px"
                 favouriteM.appendChild(div)
                 console.log("Fav: ",adTitle);
             })
@@ -109,9 +115,18 @@ const fetchProfile=()=>{
                 const myRequst=document.getElementById("myRequestM")
                 const div=document.createElement("div")
             if(el.is_accepted){
-                div.innerHTML=`
-              <p>Advertise title: ${el.advertise}</p>
-              <p>Requested time: ${el.created_at}</p>
+                fetch(`https://qrent-backend.onrender.com/advertise/all/${el.advertise}/`,
+                    {
+                        method:"GET",
+                        headers:({Authorization:`Token ${token}`,"Content-type":"application/json"})
+                    }
+                )
+                .then(res=>res.json())
+                .then(data123=>{
+                    if(data123.review.length<1){
+                        div.innerHTML=`
+              <p>Advertise title: ${data123.title}</p>
+              <p>Requested time: ${el.created_at.slice(0,10)}</p>
               <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-success">Yes</span></p>
               <div>
               <p>Rating:</p>
@@ -126,6 +141,15 @@ const fetchProfile=()=>{
               </div>
               <p class="btn btn-success my-[10px]" onclick="giveReview(${el.advertise})">Give Review</p>  
             `
+            }
+            else{
+            div.innerHTML=`
+              <p>Advertise title: ${data123.title}</p>
+              <p>Requested time: ${el.created_at.slice(0,10)}</p>
+              <p><span class="btn btn-primary">Is accepted by owner: </span> <span class="btn btn-success">Yes</span></p> 
+            `
+            }
+            })
             }
             else{
                 div.innerHTML=`
@@ -154,6 +178,9 @@ const fetchProfile=()=>{
                 <p>Rating: ${review_data.star}</p>
                 `
                 })
+                div.style.border="5px solid black"
+            div.style.padding="10px"
+            div.style.marginBottom="5px"
                 parent.appendChild(div)
             })
 
