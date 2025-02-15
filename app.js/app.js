@@ -192,16 +192,30 @@ showAllAdvertiseButNoAction()
 
 
 const loadReview=()=>{
-  fetch("https://qrent-backend.onrender.com/feedback/")
+  fetch("https://qrent-backend.onrender.com/feedback/list")
   .then(res=>res.json())
   .then(data=>{
     data.forEach(el=>{
-      console.log(el);
-      
-      console.log("Review");
-      console.log(el.user.last_name);
-      
-      
+      console.log("Review: ",el.advertise);
+      const parent=document.getElementById("all-review")
+      const li=document.createElement("li")
+      li.innerHTML=
+      `
+      <li class="slide-visible">
+                    <div class="card shadow h-100">
+                        <div class="card-body p-3 p-xl-5">
+                            <h3 class="card-title h5">${el.advertise}</h3>
+                            <h3 class="card-title h5">Rating: ${el.star}</h3>
+                            <h3 class="card-title h5">Comment:${el.review}</h3>
+                            <p class="card-text">Review by: ${el.name}</p>
+                            <div><a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+      `
+      li.classList.add("slide-visible")
+      parent.appendChild(li)
     })
   })
 }
